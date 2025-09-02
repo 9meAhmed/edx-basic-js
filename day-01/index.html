@@ -1,0 +1,115 @@
+<html>
+
+<head>
+    <style>
+        .delete-btn {
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="students-list"></ul>
+    <!-- <div class="description">
+        <p class="description-item name" id="name">Noman Ahmed</p>
+        <p class="description-item course" id="course-name">JS Full Stack Development</p>
+        <p class="description-item timing" id="class-timing">9:00AM to 12:00PM</p>
+        <p class="description-item date" id="date">02/09/2025</p>
+        <p class="description-item description" id="description">this is a description</p>
+    </div>
+    <div class="actions">
+        <button onclick="changeName()">Change Name</button>
+        <button onclick="changeCourse()">Change Course</button>
+        <button onclick="changeTiming()">Change Timing</button>
+        <button onclick="changeAll()">Change All</button>
+    </div> -->
+
+    <script>
+
+
+        var students = ['Student 01', 'Student 02', 'Student 03', 'Student 04', 'Student 05', 'Student 06', 'Student 07', 'Student 08', 'Student 09', 'Student 10'];
+        function renderStudentsList() {
+            var listElem = getElem('#students-list');
+            var listItems = '';
+
+            for (var i = 0; i < students.length; i++) {
+                listItems += '<li>' + students[i] + ' <span class="delete-btn danger">Delete</span></li>';
+            }
+
+            listElem.innerHTML = listItems;
+        }
+
+        function changeName() {
+            var newName = "<strong>New Name</strong>";
+            var nameElem = getElem('#name');
+
+            if (nameElem.innerHTML === newName) {
+                nameElem.style.color = "green";
+            }
+
+            nameElem.innerHTML = newName;
+        }
+
+        function changeCourse() {
+            var courseElem = document.getElementById('course-name');
+            courseElem.innerText = "New Course";
+        }
+
+        function changeTiming() {
+            var timingElem = document.getElementById('class-timing');
+            timingElem.innerText = "New Timing";
+        }
+
+        function changeTiming() {
+            var timingElem = document.getElementById('class-timing');
+            timingElem.innerText = "New Timing";
+        }
+
+        function changeDescription() {
+            var descriptionElem = document.getElementById('description');
+            descriptionElem.innerText = "New Description";
+        }
+
+        function changeAll() {
+            var elemNodes = getElem('.description-item', true)
+
+            console.log(elemNodes);
+
+            for (var i = 0; i < elemNodes.length; i++) {
+                console.log(i, elemNodes[i]);
+
+                if (elemNodes[i].classList.contains('name')) {
+                    elemNodes[i].style.color = "green";
+                    elemNodes[i].innerText = "green";
+                } else {
+                    elemNodes[i].style.color = "red";
+                    elemNodes[i].innerText = "red";
+                }
+            }
+        }
+
+        function getElem(query, isMulti = false) {
+            return isMulti ? document.querySelectorAll(query) : document.querySelector(query);
+        }
+
+        function setElem(query, value) {
+            var elem = getElem(query);
+            if (elem) {
+                elem.innerText = value;
+            }
+        }
+
+        renderStudentsList();
+
+        getElem('.delete-btn', true).forEach(function (element) {
+            element.addEventListener('click', function () {
+                element.parentElement.remove();
+            }, true);
+        });
+
+
+    </script>
+</body>
+
+</html>
