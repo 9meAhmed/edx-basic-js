@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Page</title>
+    <!-- <style>
+        div {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table {
+            width: 50%;
+            height: 20px;
+            text-align: center;
+            margin: auto;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+
+        button {
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+        }
+    </style> -->
+
+</head>
+
+<body>
+    <!-- <div>
+
+
+        <table>
+            <tr>
+                <th><button id="btn-0" onclick="onturn(0)">0</button></th>
+                <th><button id="btn-1" onclick="onturn(1)">0</button></th>
+                <th><button id="btn-2" onclick="onturn(2)">0</button></th>
+            </tr>
+            <tr>
+                <td><button id="btn-3" onclick="onturn(3)">0</button></td>
+                <td><button id="btn-4" onclick="onturn(4)">0</button></td>
+                <td><button id="btn-5" onclick="onturn(5)">0</button></td>
+            </tr>
+
+            <tr>
+                <td><button id="btn-6" onclick="onturn(6)">0</button></td>
+                <td><button id="btn-7" onclick="onturn(7)">0</button></td>
+                <td><button id="btn-8" onclick="onturn(8)">0</button></th>
+            </tr>
+
+
+        </table>
+    </div> -->
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        table {
+            width: 60%;
+            max-width: 400px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 0;
+        }
+
+        button {
+            width: 100%;
+            height: 60px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            background-color: #fff;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <table aria-label="Button Grid">
+                <tbody>
+                    <tr>
+                        <td><button id="btn-0" onclick="onturn(0)">0</button></td>
+                        <td><button id="btn-1" onclick="onturn(1)">0</button></td>
+                        <td><button id="btn-2" onclick="onturn(2)">0</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="btn-3" onclick="onturn(3)">0</button></td>
+                        <td><button id="btn-4" onclick="onturn(4)">0</button></td>
+                        <td><button id="btn-5" onclick="onturn(5)">0</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="btn-6" onclick="onturn(6)">0</button></td>
+                        <td><button id="btn-7" onclick="onturn(7)">0</button></td>
+                        <td><button id="btn-8" onclick="onturn(8)">0</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- <script>
+            function onturn(index) {
+                const btn = document.getElementById(`btn-${index}`);
+                btn.textContent = btn.textContent === "0" ? "X" : "0";
+            }
+        </script> -->
+
+
+        <script>
+            var playerTurn = 1;
+            function onturn(index) {
+                // var actionInputs=['','','','','','','','','']
+                var playerMark;
+
+                if (playerTurn === 1) {
+                    playerMark = "O";
+                    playerTurn = 2;
+                }
+                else {
+                    playerMark = "X";
+                    playerTurn = 1;
+                }
+                console.log("Player Mark", playerMark);
+
+                var btn = document.getElementById("btn-" + index)
+                btn.disabled = true;
+                btn.innerHTML = playerMark;
+
+                console.log("Button clicked", index);
+                //    document.getElementsByTagName("button")[index].innerText = index;
+            }
+        </script>
+    </body>
+
+</html>

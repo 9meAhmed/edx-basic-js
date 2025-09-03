@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section-1">
+        <h1 class="heading"><span style="color:red">01</span>Welcome to My Website 1</h1>
+        <p class="description">This is a simple HTML document.</p>
+        <p class="description2">This is a simple HTML document.</p>
+    </section>
+    <section class="section-2">
+        <h1 class="heading hidden">Welcome to My Website 2</h1>
+        <p class="description">This is a simple HTML document.</p>
+        <p class="description2">This is a simple HTML document.</p>
+    </section>
+    <script>
+        var element = document.querySelector('.section-2 .heading');
+        console.log(element);
+    </script>
+</body>
+
+</html>
