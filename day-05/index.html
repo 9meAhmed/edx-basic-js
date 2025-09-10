@@ -107,15 +107,20 @@
 
             formData = new FormData(signupForm);
 
-            userInfo = {
-                firstName: formData.get('firstname'),
-                lastName: formData.get('lastname'),
-                username: formData.get('username'),
-                password: formData.get('password'),
-                gender: formData.get('gender'),
-                email: formData.get('email'),
-                about: formData.get('about'),
-            };
+            var userInfo = {}
+            formData.forEach((value, key) => {
+                userInfo[key] = value;
+            });
+
+            // userInfo = {
+            //     firstName: formData.get('firstname'),
+            //     lastName: formData.get('lastname'),
+            //     username: formData.get('username'),
+            //     password: formData.get('password'),
+            //     gender: formData.get('gender'),
+            //     email: formData.get('email'),
+            //     about: formData.get('about'),
+            // };
 
             userRecords.push(userInfo);
             renderUserRecords();
@@ -128,8 +133,20 @@
             }
 
             console.log('delete index ', index);
-            // userRecords.splice(index, 1);
+            userRecords.splice(index, 1);
             renderUserRecords();
+        }
+
+        function editRecord(index) {
+            console.log('edit index ', userRecords[index]);
+
+            var student = userRecords[index];
+
+            for (const key in student) {
+                if (key !== 'gender' && key !== 'about')
+                    document.querySelector(`input[name="${key}"]`).value = student[key];
+            }
+
         }
 
         function renderUserRecords() {
@@ -140,14 +157,17 @@
                 recordsHtml += `
                     <tr>
                         <td>${userRecords.indexOf(element) + 1}</td>
-                        <td>${element.firstName}</td>
-                        <td>${element.lastName}</td>
+                        <td>${element.firstname}</td>
+                        <td>${element.lastname}</td>
                         <td>${element.username}</td>
                         <td>${element.password}</td>
                         <td>${element.gender}</td>
                         <td>${element.email}</td>
                         <td>${element.about}</td>
-                        <td><button class="btn btn-danger btn-sm" onclick="deleteRecord(${index})">Delete</button></td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" onclick="deleteRecord(${index})">Delete</button>
+                            <button class="btn btn-warning btn-sm" onclick="editRecord(${index})">Edit</button>
+                        </td>
                     </tr>
                 `;
             });

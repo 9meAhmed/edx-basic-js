@@ -20,16 +20,28 @@
             { name: 'Ian', age: 21, marks: 44 },
             { name: 'Julia', age: 20, marks: 90 }
         ];
-
         var updatedUserRecords = userRecords.map((user) => {
             console.log(user.name + ' is ' + user.age + ' years old and has scored ' + user.marks + ' marks.');
             user.marks = user.marks + 10;
+            user.pass = user.marks >= passingMarks;
             return user;
-        });
+        })
 
-        console.log('pass students', updatedUserRecords)
+        var passStudents = updatedUserRecords.filter((user) => user.pass);
+        var failStudents = updatedUserRecords.filter((user) => !user.pass);
 
-    </script>
+        var isAllStudentsPassed = updatedUserRecords.every((user) => user.pass);
+        var isAnyStudentPassed = updatedUserRecords.some((user) => user.pass);
+
+        var passStudentsTotalMarks = passStudents.reduce((total, user) => total + user.marks, 0);
+        var failStudentsTotalMarks = failStudents.reduce((total, user) => total + user.marks, 0);
+
+
+
+
+        console.log('students', updatedUserRecords, passStudents, failStudents);
+
+    </script>98
 </body>
 
 </html>
