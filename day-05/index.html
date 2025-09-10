@@ -118,10 +118,25 @@
             };
 
             userRecords.push(userInfo);
+            renderUserRecords();
+        });
+
+        function deleteRecord(index) {
+
+            if (!confirm('Delete krna hy ka nahi?')) {
+                return;
+            }
+
+            console.log('delete index ', index);
+            // userRecords.splice(index, 1);
+            renderUserRecords();
+        }
+
+        function renderUserRecords() {
 
             var recordsHtml = '';
 
-            userRecords.forEach(element => {
+            userRecords.forEach((element, index) => {
                 recordsHtml += `
                     <tr>
                         <td>${userRecords.indexOf(element) + 1}</td>
@@ -132,7 +147,7 @@
                         <td>${element.gender}</td>
                         <td>${element.email}</td>
                         <td>${element.about}</td>
-                        <td><button class="btn btn-danger btn-sm" onclick="deleteRecord(${userRecords.indexOf(element)})">Delete</button></td>
+                        <td><button class="btn btn-danger btn-sm" onclick="deleteRecord(${index})">Delete</button></td>
                     </tr>
                 `;
             });
@@ -154,7 +169,7 @@
             // }
 
             document.getElementById('summary-body').innerHTML = recordsHtml;
-        });
+        }
     </script>
 </body>
 

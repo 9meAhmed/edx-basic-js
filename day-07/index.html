@@ -1,0 +1,35 @@
+<html>
+
+<head></head>
+
+<body>
+    <script>
+        console.log('Day 07');
+
+        var passingMarks = 80;
+
+        var userRecords = [
+            { name: 'Alice', age: 20, marks: 85 },
+            { name: 'Bob', age: 22, marks: 68 },
+            { name: 'Charlie', age: 19, marks: 52 },
+            { name: 'David', age: 21, marks: 88 },
+            { name: 'Eva', age: 20, marks: 76 },
+            { name: 'Frank', age: 23, marks: 61 },
+            { name: 'Grace', age: 18, marks: 95 },
+            { name: 'Helen', age: 22, marks: 49 },
+            { name: 'Ian', age: 21, marks: 44 },
+            { name: 'Julia', age: 20, marks: 90 }
+        ];
+
+        var updatedUserRecords = userRecords.map((user) => {
+            console.log(user.name + ' is ' + user.age + ' years old and has scored ' + user.marks + ' marks.');
+            user.marks = user.marks + 10;
+            return user;
+        });
+
+        console.log('pass students', updatedUserRecords)
+
+    </script>
+</body>
+
+</html>
